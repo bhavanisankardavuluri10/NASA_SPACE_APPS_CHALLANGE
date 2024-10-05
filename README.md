@@ -1,4 +1,4 @@
-# NASA_SPACE_APPS_CHALLANGE
+
 # NASA_SPACE_APPS_CHALLANGE
 Here’s a sample `README.md` file for your project:
 
