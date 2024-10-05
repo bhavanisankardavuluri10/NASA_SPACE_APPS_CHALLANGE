@@ -63,7 +63,7 @@ document.getElementById("username").textContent = username;
 
 1. Clone the repository or download the project files:
    ```bash
-   git clone https://github.com/yourusername/globe-quest-web-app.git
+   git clone (https://github.com/bhavanisankardavuluri10/NASA_SPACE_APPS_CHALLANGE.git)
    ```
 
 2. Open the `index.html` file in a web browser:
