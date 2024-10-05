@@ -4,19 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <style>
+        /* Body styling with a gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(45deg, #00b3ff, #ff00e6);
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+            text-align: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Text styles */
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                         0 0 20px rgba(255, 0, 255, 0.8);
+        }
+
+        p {
+            font-size: 24px;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+                         0 0 15px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Button styles */
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
 </head>
-<body >
+<body>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const username = params.get("username"); // Extract "username" from query parameter 
+            document.getElementById("username").textContent = username;
+        });
+    </script>
 
-        const params = new URLSearchParams(window.location.search);
-         const username=params.get("username"); //extract "username" from query parameter 
-         document.getElementById("p").textContent=`Welcome, ${username} !`;
-        })
-   </script>
-    <p id="p"></p>
-
+    <h1>Welcome, <span id="username"></span>!</h1>
     <p>You have successfully logged in.</p>
-    
+    <button class="logout-btn" onclick="window.location.href='/login.html';">Logout</button>
 </body>
 </html>
