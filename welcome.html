@@ -124,7 +124,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="/about.html">Contact</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="resources.html">Resources</a></li>
             <li><a href="#" onclick="redirectToTeamFormation()">My Team</a></li>
         </ul>
     </div>
@@ -134,7 +134,7 @@
         <!-- Welcome Section -->
         <h1>Welcome, <span id="username"></span>!</h1>
         <p>You have successfully logged in.</p>
-        <button class="logout-btn" onclick="window.location.href='/.html';">STARTQUEST</button>
+        <button class="logout-btn" id="start-quest-btn">START QUEST</button>
         <button class="logout-btn" onclick="window.location.href='/login.html';">Logout</button>
 
         <!-- GLOBE Quest Section -->
@@ -158,6 +158,52 @@
             }
         }
 
+        // Fetch team data with detailed logging
+        async function fetchTeamData(username) {
+            try {
+                const response = await fetch(`http://localhost:3000/user/getTeam?username=${username}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch team data. Status: ${response.status}`);
+                }
+
+                const data = await response.json(); // Parse the response to JSON
+
+                // Log the entire response to understand its structure
+                console.log("Raw team data response:", data);
+
+                // Check if the expected data is present
+                if (data.check && data.team) {
+                    return data.team; // Return the team data
+                } else {
+                    throw new Error('Invalid team data received');
+                }
+
+            } catch (error) {
+                console.error("Error fetching team data:", error.message);
+                alert("Could not retrieve team data. Please try again later.");
+                return null;
+            }
+        }
+
+        // Handle START QUEST button click
+        document.getElementById('start-quest-btn').addEventListener('click', async () => {
+            const username = document.getElementById("username").textContent;
+            if (!username) {
+                alert("Username is not available.");
+                return;
+            }
+
+            const teamData = await fetchTeamData(username);
+            if (teamData) {
+                const teamName = teamData.teamName;
+                const teamScore = teamData.score;
+                // Redirect to global.html with team name and score as query parameters
+                window.location.href = `/globe.html?teamName=${encodeURIComponent(teamName)}&teamScore=${teamScore}`;
+            }
+        });
+
+        // Populate username on page load
         document.addEventListener('DOMContentLoaded', function() {
             const params = new URLSearchParams(window.location.search);
             const username = params.get("username"); // Extract "username" from query parameter
