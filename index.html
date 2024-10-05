@@ -3,131 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Globe Trotters</title>
     <style>
+        /* Body Style with Animated Gradient Background */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Dark background */
-            color: #fff; /* Light text color for contrast */
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background: linear-gradient(45deg, #00b3ff, #ff00e6, #ff9933);
+            background-size: 600% 600%;
+            animation: gradientAnimation 15s ease infinite;
         }
 
-        .center {
-            background-color: #1e1e1e; /* Slightly lighter dark color for the form */
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
-            padding: 40px 30px;
-            max-width: 400px;
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar Styling */
+        nav {
             width: 100%;
-            text-align: center;
-        }
-
-        .globe-trotters-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #0d254f;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #00b3ff, #00ffb3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .center label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #ddd; /* Light text for labels */
-        }
-
-        .center input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-            background-color: #333; /* Dark input field */
-            color: #fff; /* White text inside the input */
-        }
-
-        .center input::placeholder {
-            color: #999; /* Placeholder text color */
-        }
-
-        .center input:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        .button_container {
+            background-color: rgba(18, 52, 73, 0.8);
+            padding: 15px 0;
+            position: absolute;
+            top: 0;
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            justify-content: space-around;
+            align-items: center;
         }
 
-        .button_container button {
-            width: 48%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
             color: white;
             font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00b3ff;
+        }
+
+        /* Central Container */
+        .center-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        /* Glowing Text Effect */
+        .globe-trotters-title {
+            font-size: 64px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                         0 0 30px rgba(255, 0, 255, 0.8), 
+                         0 0 40px rgba(0, 123, 255, 0.8),
+                         0 0 50px rgba(255, 255, 0, 0.8);
+            animation: glowAnimation 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowAnimation {
+            from {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                             0 0 30px rgba(255, 0, 255, 0.8),
+                             0 0 40px rgba(0, 123, 255, 0.8),
+                             0 0 50px rgba(255, 255, 0, 0.8);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 1),
+                             0 0 40px rgba(255, 0, 255, 1),
+                             0 0 50px rgba(0, 123, 255, 1),
+                             0 0 60px rgba(255, 255, 0, 1);
+            }
+        }
+
+        /* Button Styling */
+        .explore-btn {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #fff;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease-in-out;
         }
 
-        .button_container button:hover {
-            background-color: #0056b3;
+        /* Button Hover Effect */
+        .explore-btn:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(0, 123, 255, 0.8);
         }
 
-        .button_container #SignUp {
-            background-color: #28a745;
-        }
-
-        .button_container #SignUp:hover {
-            background-color: #218838;
-        }
-
-        @media (max-width: 500px) {
-            .center {
-                padding: 30px 20px;
-            }
-
-            .button_container button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/login.html">Login</a></li>
+            <li><a href="/signUp.html">Sign Up</a></li>
+        
+        </ul>
+    </nav>
 
-    <div class="center">
-        <h2 class="globe-trotters-title">Globe Trotters</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required placeholder="Enter your username">
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Enter your password">
-            
-            <div class="button_container">
-                <button type="submit">Login</button>
-                <button id="SignUp" type="button">Sign Up</button>
-            </div>
-        </form>
+    <!-- Main Section with Title and Button -->
+    <div class="center-container">
+        <h1 class="globe-trotters-title">Globe Trotters</h1>
+        <button class="explore-btn" id="login">Explore the World</button>
     </div>
 
-    <script src="login.js"></script>
+    <script>
+        document.getElementById("login").addEventListener('click', function() {
+            window.location.href = '/login.html';
+        });
+    </script>
 </body>
 </html>
