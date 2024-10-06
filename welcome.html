@@ -161,7 +161,7 @@
         // Fetch team data with detailed logging
         async function fetchTeamData(username) {
             try {
-                const response = await fetch(`http://localhost:3000/user/getTeam?username=${username}`);
+                const response = await fetch(`https://backend-finalle.onrender.com/user/getTeam?username=${username}`);
                 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch team data. Status: ${response.status}`);
