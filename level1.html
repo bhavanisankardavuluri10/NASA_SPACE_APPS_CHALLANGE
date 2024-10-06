@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Urbanization Storytelling</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide scrollbars */
+            color: white;
+        }
+
+        /* Fullscreen Image */
+        .fullscreen-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire screen */
+        }
+
+        /* Text Container */
+        .text-container {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for text */
+            border-radius: 10px;
+            max-width: 80%; /* Limit text width */
+        }
+
+        /* Button Styles */
+        .button {
+            position: absolute;
+            bottom: 10%;
+            width: 100px;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .next-button {
+            right: 10%;
+        }
+
+        .back-button {
+            left: 10%;
+        }
+
+        .button:hover {
+            background-color: #ff4b47;
+        }
+    </style>
+</head>
+<body>
+    <img class="fullscreen-image" id="storyImage" src="image1.jpg" alt="Story Image">
+    <div class="text-container" id="storyText">In 2050, skyscrapers overshadowed the city, but pollution and congestion plagued daily life.</div>
+    
+    <button class="button back-button" id="backButton">Back</button>
+    <button class="button next-button" id="nextButton">Next</button>
+
+    <script>
+        // Story data
+        const storyData = [
+            {
+                image: 'image_1.png',
+                text: 'In 2050, skyscrapers overshadowed the city, but pollution and congestion plagued daily life.'
+            },
+            {
+                image: 'image_2.png',
+                text: 'An engineer watched as her vibrant city turned into a lifeless concrete jungle.'
+            },
+            {
+                image: 'image_3.png',
+                text: 'Families lived in cramped apartments, with children having no parks to play in.'
+            },
+            {
+                image: 'image_4.png',
+                text: 'Rivers were polluted, wildlife vanished, and the ecosystem suffered.'
+            },
+            {
+                image: 'image_5.jpg',
+                text: 'A grassroots movement began, aiming to restore parks and spark hope in the community.'
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function updateStory() {
+            const currentStory = storyData[currentIndex];
+            document.getElementById('storyImage').src = currentStory.image;
+            document.getElementById('storyText').innerText = currentStory.text;
+        }
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            if (currentIndex < storyData.length - 1) {
+                currentIndex++;
+                updateStory();
+            } else {
+                // Redirect to level1task.html on last slide
+                window.location.href = 'level1task.html';
+            }
+        });
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateStory();
+            }
+        });
+
+        // Initialize the story
+        updateStory();
+    </script>
+</body>
+</html>

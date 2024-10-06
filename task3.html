@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 3: Drought</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background.png') no-repeat center center fixed; /* Changed background image */
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 2rem;
+        }
+
+        .task-container {
+            background: rgba(0, 0, 0, 0.7);
+            margin: 2rem auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .task-description {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin: 0.5rem 0;
+            text-align: left;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border: 1px solid #888;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task 3: Drought</h1>
+    <div class="task-container">
+        <div class="task-description">
+            <h2>Task Description:</h2>
+            <p>
+                Drought is a prolonged period of deficient rainfall relative to the statistical multi-year average for a region. 
+                Addressing drought involves sustainable water management, conservation practices, and community engagement. 
+                Please propose options and features to combat drought effectively.
+            </p>
+        </div>
+
+        <form id="submissionForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="options">Proposed Options:</label>
+            <textarea id="options" name="options" rows="4" required placeholder="Describe your proposed options for managing drought..."></textarea>
+
+            <label for="features">Features:</label>
+            <textarea id="features" name="features" rows="4" required placeholder="List the features you suggest for your solution..."></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('submissionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            
+            // Gather form data
+            const name = document.getElementById('name').value;
+            const options = document.getElementById('options').value;
+            const features = document.getElementById('features').value;
+
+            // Here you can send the data to a server or handle it as needed
+            alert(`Thank you, ${name}! Your submission has been received.\n\nOptions:\n${options}\n\nFeatures:\n${features}`);
+            
+            // Optionally, reset the form
+            this.reset();
+            
+            // Redirect to battles.html
+            window.location.href = 'battle.html';
+        });
+    </script>
+</body>
+</html>

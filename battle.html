@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Levels Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background.png') no-repeat center center fixed; /* Changed background image */
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 2rem;
+        }
+
+        .level-box {
+            display: inline-block;
+            width: 200px; /* Width of level box */
+            height: 100px; /* Height of level box */
+            margin: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .level-box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+            padding-top: 60px; /* Place content 60px from the top */
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            color: white;
+            border-radius: 10px;
+            text-align: left;
+            position: relative; /* Position for absolute elements */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .sublevel-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sublevel-list li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a Level</h1>
+    <div class="level-container">
+        <div class="level-box" onclick="window.location.href='level1.html'">
+            <h3>Level 1: Urbanization</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level2')">
+            <h3>Level 2: Flooding</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level3')">
+            <h3>Level 3: Drought</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level4')">
+            <h3>Level 4: Water Pollution</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level5')">
+            <h3>Level 5: Climate Change</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level6')">
+            <h3>Level 6: Soil Conservation</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level7')">
+            <h3>Level 7: Waste Management</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level8')">
+            <h3>Level 8: Sustainable Agriculture</h3>
+        </div>
+        <div class="level-box" onclick="showSublevels('level9')">
+            <h3>Level 9: One Health Approach</h3>
+        </div>
+    </div>
+
+    <!-- Modal for sublevels -->
+    <div id="sublevelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="levelTitle"></h2>
+            <h4>Sublevels:</h4>
+            <ul id="sublevelList" class="sublevel-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Sublevels data
+        const sublevels = {
+            level1: ['Sublevel 1-1', 'Sublevel 1-2', 'Sublevel 1-3'],
+            level2: ['Sublevel 2-1', 'Sublevel 2-2', 'Sublevel 2-3'],
+            level3: ['Sublevel 3-1', 'Sublevel 3-2', 'Sublevel 3-3'],
+            level4: ['Sublevel 4-1', 'Sublevel 4-2', 'Sublevel 4-3'],
+            level5: ['Sublevel 5-1', 'Sublevel 5-2', 'Sublevel 5-3'],
+            level6: ['Sublevel 6-1', 'Sublevel 6-2', 'Sublevel 6-3'],
+            level7: ['Sublevel 7-1', 'Sublevel 7-2', 'Sublevel 7-3'],
+            level8: ['Sublevel 8-1', 'Sublevel 8-2', 'Sublevel 8-3'],
+            level9: ['Sublevel 9-1', 'Sublevel 9-2', 'Sublevel 9-3']
+        };
+
+        const levelNames = {
+            level1: 'Urbanization',
+            level2: 'Flooding',
+            level3: 'Drought',
+            level4: 'Water Pollution',
+            level5: 'Climate Change',
+            level6: 'Soil Conservation',
+            level7: 'Waste Management',
+            level8: 'Sustainable Agriculture',
+            level9: 'One Health Approach'
+        };
+
+        function showSublevels(level) {
+            const levelTitle = levelNames[level];
+            document.getElementById('levelTitle').innerText = levelTitle;
+            const sublevelList = document.getElementById('sublevelList');
+            sublevelList.innerHTML = ''; // Clear previous sublevels
+            
+            sublevels[level].forEach(sublevel => {
+                const listItem = document.createElement('li');
+                listItem.innerText = sublevel;
+                sublevelList.appendChild(listItem);
+            });
+
+            document.getElementById('sublevelModal').style.display = 'block'; // Show the modal
+        }
+
+        function closeModal() {
+            document.getElementById('sublevelModal').style.display = 'none'; // Hide the modal
+        }
+
+        // Close the modal when the user clicks anywhere outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('sublevelModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
