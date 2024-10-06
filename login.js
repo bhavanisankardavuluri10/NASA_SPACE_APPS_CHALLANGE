@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
   const password = document.getElementById('password').value;
  
   // Update the fetch request with the full URL (including port 3000)
-  fetch(`https://backend-finalle.onrender.com/user/login?username=${username}&password=${password}`, {         ////   //only delete till .com  http://localhost:3000/user/login
+  fetch(`http://localhost:3000/user/login?username=${username}&password=${password}`, {         ////   //only delete till .com  http://localhost:3000/user/login
 
       method: 'GET',
   })

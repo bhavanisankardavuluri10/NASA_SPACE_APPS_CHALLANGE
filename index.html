@@ -3,147 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globe Trotters</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GLOBE Quest - Explore. Learn. Protect.</title>
     <style>
-        /* Body Style with Animated Gradient Background */
+        /* Global Styles */
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Arial', sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #00b3ff, #ff00e6, #ff9933);
-            background-size: 600% 600%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Navbar Styling */
-        nav {
-            width: 100%;
-            background-color: rgba(18, 52, 73, 0.8);
-            padding: 15px 0;
-            position: absolute;
-            top: 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            display: flex;
             margin: 0;
             padding: 0;
-        }
-
-        nav ul li {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            font-weight: bold;
+            background: url('background.png') no-repeat center center fixed; /* Updated background image */
+            background-size: cover;
             color: white;
-            font-size: 16px;
-            transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: #00b3ff;
-        }
-
-        /* Central Container */
-        .center-container {
+        header {
             text-align: center;
-            margin-top: 100px;
+            padding: 2rem 0;
         }
 
-        /* Glowing Text Effect */
-        .globe-trotters-title {
-            font-size: 64px;
-            font-weight: bold;
-            color: #fff;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
-                         0 0 30px rgba(255, 0, 255, 0.8), 
-                         0 0 40px rgba(0, 123, 255, 0.8),
-                         0 0 50px rgba(255, 255, 0, 0.8);
-            animation: glowAnimation 2s ease-in-out infinite alternate;
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
         }
 
-        @keyframes glowAnimation {
-            from {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-                             0 0 30px rgba(255, 0, 255, 0.8),
-                             0 0 40px rgba(0, 123, 255, 0.8),
-                             0 0 50px rgba(255, 255, 0, 0.8);
-            }
-            to {
-                text-shadow: 0 0 30px rgba(255, 255, 255, 1),
-                             0 0 40px rgba(255, 0, 255, 1),
-                             0 0 50px rgba(0, 123, 255, 1),
-                             0 0 60px rgba(255, 255, 0, 1);
-            }
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
         }
 
-        /* Button Styling */
-        .explore-btn {
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid #fff;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* Slideshow Container */
+        .slideshow-container {
+            max-width: 80%;  /* Adjust the width of the slideshow */
+            height: 300px;  /* Fixed height for the slideshow */
+            position: relative;
+            margin: 2rem auto;
+            text-align: center;
+            border: 3px solid white; /* Optional border around slideshow */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the images fit well inside the slideshow */
+        }
+
+        .active-slide {
+            display: block;
+        }
+
+        /* Info Section */
+        .info-section {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+        }
+
+        .cta-btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
         }
 
-        /* Button Hover Effect */
-        .explore-btn:hover {
-            background-color: #fff;
-            color: #000;
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(0, 123, 255, 0.8);
+        .cta-btn:hover {
+            background-color: #ff4b47;
         }
 
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent background for footer */
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="/signUp.html">Sign Up</a></li>
-        
-        </ul>
-    </nav>
+    <header>
+        <div class="container">
+            <h1>GLOBE Quest</h1>
+            <p class="tagline">Explore. Learn. Protect.</p>
+        </div>
+    </header>
 
-    <!-- Main Section with Title and Button -->
-    <div class="center-container">
-        <h1 class="globe-trotters-title">Globe Trotters</h1>
-        <button class="explore-btn" id="login">Explore the World</button>
-    </div>
+    <main>
+        <!-- Slideshow Section -->
+        <section class="slideshow-container">
+            <img class="slides active-slide" src="image1.jpg" alt="Image 1">
+            <img class="slides" src="image2.png" alt="Image 2">
+            <img class="slides" src="image3.png" alt="Image 3">
+            <img class="slides" src="image4.png" alt="Image 4">
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <p>The GLOBE Protocols are essential because they empower individuals—students, educators, and citizen scientists alike—to contribute meaningfully to scientific research while learning about the environment. By following standardized methods for collecting data on topics such as climate, water quality, soil health, and biodiversity, participants can ensure their findings are accurate, reliable, and comparable across different regions and time periods. This data contributes to a global database that scientists use to track environmental changes, analyze trends, and make informed decisions about pressing issues like climate change and natural resource management. The GLOBE Protocols not only promote hands-on learning but also inspire a sense of responsibility, encouraging individuals to take part in understanding and protecting our planet.</p>
+        </section>
+
+        <section class="cta">
+            <h2>Are You Ready to Start Your Quest?</h2>
+            <p>Sign up today and make a difference!</p>
+            <button class="cta-btn" onclick="window.location.href='home.html'">Get Started</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GLOBE Quest | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
 
     <script>
-        document.getElementById("login").addEventListener('click', function() {
-            window.location.href = '/login.html';
-        });
+        // Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex - 1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
     </script>
 </body>
 </html>

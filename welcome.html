@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <style>
-        /* Body styling with a gradient background */
+        /* Body styling with a gradient background and a background image */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(45deg, #00b3ff, #ff00e6);
+            background: 
+                linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8)), /* Black to Dark Gray */
+                url('WhatsApp Image 2024-10-06 at 06.26.26_ad00a55e.jpg') no-repeat center center fixed; /* Add your background image URL here */
+            background-size: cover; /* Ensure the image covers the entire viewport */
             animation: gradientAnimation 15s ease infinite;
             color: #fff;
             text-align: center;
@@ -30,7 +33,7 @@
             top: 0;
             width: 100%;
             height: 60px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.9); /* Darker overlay for navbar */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,7 +52,7 @@
         }
 
         .navbar ul li a {
-            color: white;
+            color: #f0f0f0; /* Light gray for links */
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
@@ -72,15 +75,15 @@
         h1 {
             font-size: 48px;
             margin: 0;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
-                         0 0 20px rgba(255, 0, 255, 0.8);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 
+                         0 0 20px rgba(0, 255, 255, 0.7); /* Light cyan shadow */
         }
 
         p {
             font-size: 24px;
             margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
-                         0 0 15px rgba(255, 0, 255, 0.6);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 
+                         0 0 15px rgba(0, 255, 255, 0.5); /* Light cyan shadow */
         }
 
         /* GLOBE Quest Section */
@@ -96,6 +99,7 @@
             font-size: 36px;
             text-align: center;
             margin-bottom: 15px;
+            color: #f0f0f0; /* Light gray for the title */
         }
 
         /* Button styles */
@@ -105,7 +109,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #fff;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.9); /* Almost black for button */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -113,7 +117,7 @@
         }
 
         .logout-btn:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 1); /* Darker on hover */
         }
 
     </style>
@@ -122,10 +126,14 @@
     <!-- Navbar Section -->
     <div class="navbar">
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/profiles.html">Profile</a></li>
+            <li><a href="characters[1]\characters.html">Characters</a></li>
+            
             <li><a href="/about.html">Contact</a></li>
             <li><a href="resources.html">Resources</a></li>
             <li><a href="#" onclick="redirectToTeamFormation()">My Team</a></li>
+            <li><a href="battle.html">Battle</a></li>
+
         </ul>
     </div>
 
@@ -135,7 +143,7 @@
         <h1>Welcome, <span id="username"></span>!</h1>
         <p>You have successfully logged in.</p>
         <button class="logout-btn" id="start-quest-btn">START QUEST</button>
-        <button class="logout-btn" onclick="window.location.href='/login.html';">Logout</button>
+        
 
         <!-- GLOBE Quest Section -->
         <div class="globe-quest">
@@ -161,7 +169,7 @@
         // Fetch team data with detailed logging
         async function fetchTeamData(username) {
             try {
-                const response = await fetch(`https://backend-finalle.onrender.com/user/getTeam?username=${username}`);
+                const response = await fetch(`http://localhost:3000/user/getTeam?username=${username}`);
                 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch team data. Status: ${response.status}`);
