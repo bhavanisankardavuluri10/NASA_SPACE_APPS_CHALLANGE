@@ -92,7 +92,7 @@ function checkAnswers(questions, quizContainer, teamName) {
 
 // Function to send the updated score to the server
 function updateTeamScore(teamName, score) {
-    fetch('/updateScore', {
+    fetch('https://backend-finalle.onrender.com/user/updateScore', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
