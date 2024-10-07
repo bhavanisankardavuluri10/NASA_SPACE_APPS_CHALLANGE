@@ -1,8 +1,13 @@
 # NASA_SPACE_APPS_CHALLANGE
 
+
 # GLOBE Quest Web Application - README
 
 LIVE AT--(https://globetrottersquest.netlify.app/)
+
+
+=======
+# GLOBE Quest Web Application - README
 
 
 Welcome to *GLOBE Quest, an innovative and interactive web application designed to immerse students in the world of environmental education through engaging narratives, competitive gameplay, and real-world scientific challenges based on **NASA’s GLOBE Protocol*.
@@ -135,7 +140,7 @@ This project is licensed under the MIT License.
 - *Balu* - Developer
 - *Naveen* - Analyst and Team Lead
 - *Charu* - Frontend Developer
-- *Anshuman Samanta* - Developer
+- *Anshuman Samanta* - Backend Developer
 - *Plaksha* - Astronomist
 - *Mithin* - Astronomist
 
