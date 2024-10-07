@@ -148,7 +148,7 @@
       document.getElementById("username").textContent = username;
 
       try {
-        const response = await fetch(`http://localhost:3000/user/checkUserTeam?username=${username}`);
+        const response = await fetch(`https://backend-finalle.onrender.com/user/checkUserTeam?username=${username}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -202,7 +202,7 @@
       const members = document.getElementById("members").value.split(",").map(member => member.trim());
 
       try {
-        const response = await fetch(`http://localhost:3000/user/createTeam`, {
+        const response = await fetch(`https://backend-finalle.onrender.com/user/createTeam`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
