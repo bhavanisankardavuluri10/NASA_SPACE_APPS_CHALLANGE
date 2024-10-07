@@ -60,6 +60,8 @@
 
         // Navigate to the team_formation.html page when the Team Info button is clicked
         teamInfoButton.addEventListener('click', () => {
+            const params = new URLSearchParams(window.location.search);
+            const username = params.get("username"); 
             window.location.href = 'team_formation.html'; // Redirect to team_formation.html
         });
     </script>
