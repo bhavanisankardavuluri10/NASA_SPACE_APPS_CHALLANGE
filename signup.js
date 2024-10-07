@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         age: age
       };
   
-      fetch(`http://localhost:3000/user/signup`, {           //   //only delete till .com     http://localhost:3000/user/signup
+      fetch(`https://backend-finalle.onrender.com/user/signup`, {           //   //only delete till .com     http://localhost:3000/user/signup
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
